@@ -14,22 +14,16 @@ export default class AccountsScreen extends Component {
         color: '#fff'
       }
     };
-
-    state = {
-      'loggedIn': 'false'
-    }
   
     componentDidMount = () => AsyncStorage.getItem('loggedIn')
     .then((value) => {
       if(value == 'false'){
         AsyncStorage.setItem('loggedIn', 'true');
-        this.setState({ 'loggedIn': 'true' });
       }
     });
 
     logOut = () => {
       AsyncStorage.setItem('loggedIn', 'false');
-      this.setState({ 'loggedIn': 'false' });
       this.props.navigation.navigate('Home');
    }
   
