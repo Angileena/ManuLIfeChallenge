@@ -7,23 +7,19 @@ import {Button, Image,
   TouchableOpacity,
   View,AsyncStorage} from 'react-native';  
 
-
+var loggedIn = '';
 export default class HomeScreen extends Component {    
   static navigationOptions = {
     header:null
   };
 
-  state = {
-    'loggedIn': 'false'
-  }
-
-  componentDidMount = () => AsyncStorage.getItem('loggedIn').then((value) => this.setState({ 'loggedIn': value }))
+  componentDidMount = () => AsyncStorage.getItem('loggedIn').then((value) => this.loggedIn = value );
 
 
   
     render() {
       const {navigate} = this.props.navigation;      
-      if(this.state.loggedIn == 'true'){
+      if(this.loggedIn == 'true'){
         return(navigate("Accounts"));
       }else{
         return (
